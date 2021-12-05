@@ -32,7 +32,7 @@ namespace Chess
 
             else if (a==3)
             {
-                
+                thirdTask(deskMain);
             }
 
             else
@@ -162,7 +162,7 @@ namespace Chess
             }
             else if (a == 4)
             {
-                if ((Abs(firstcell_x - secondsell_x) == 1) && ((Abs(firstcell_y - secondcell_y) == 2))|| ((Abs(firstcell_x - secondsell_x) == 2) && ((Abs(firstcell_y - secondcell_y) == 1))))
+                if ((Abs(firstcell_x - secondsell_x) == 1) && ((Abs(firstcell_y - secondcell_y) == 2)) || ((Abs(firstcell_x - secondsell_x) == 2) && ((Abs(firstcell_y - secondcell_y) == 1))))
                 {
                     Console.WriteLine("Фигура может достигнуть данной клетки");
                 }
@@ -181,7 +181,129 @@ namespace Chess
             BuildingDesk(deskMain);
         }
 
+        static void thirdTask(string[,] deskMain)
+        {
+            Console.Clear();
+            Console.WriteLine("Выберите фигуру");
+            int a = 0;
+            Console.WriteLine("1 - Ферзь");
+            Console.WriteLine("2 - Ладья");
+            Console.WriteLine("3 - Слон");
+            Console.WriteLine("4 - Конь");
+            a = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите начальную координату фигуры");
+            int firstcell_x = Convert.ToInt32(Console.ReadLine());
+            int firstcell_y = Convert.ToInt32(Console.ReadLine());
 
+            Console.WriteLine("Введите конечную координату фигуры");
+            int secondsell_x = Convert.ToInt32(Console.ReadLine());
+            int secondcell_y = Convert.ToInt32(Console.ReadLine());
+
+            if (a == 1)
+            {
+                for (int x = 1; x< 9; x++)
+                {
+                    for (int y = 1; y < 9; y++ )
+                    {
+                        if ((((Abs(firstcell_x - x) == Abs(firstcell_y - y)) || (firstcell_x == x) || (firstcell_y == y))) && (((Abs(x - secondsell_x) == Abs(y - secondcell_y)) || (x == secondsell_x) || (y == secondcell_y))))
+                        {
+                            Console.WriteLine("Фигура может достигнуть данной клетки в любом случае, лол");
+                            deskMain[firstcell_x -1, firstcell_y - 1] = "1";
+                            deskMain[x - 1, y - 1] = "2";
+                            deskMain[secondsell_x - 1, secondcell_y - 1] = "3";
+                            BuildingDesk(deskMain);
+                            goto LoopEnd;
+
+                        }
+                    }
+                }
+
+            }
+
+            if (a == 2)
+            {
+                for (int x = 1; x < 9; x++)
+                {
+                    for (int y = 1; y < 9; y++)
+                    {
+                        if (((firstcell_x == x) || (firstcell_y == y)) && ((x == secondsell_x) || (y == secondcell_y)))
+                        {
+                            Console.WriteLine("Фигура может достигнуть данной клетки в любом случае, лол");
+                            deskMain[firstcell_x - 1, firstcell_y - 1] = "1";
+                            deskMain[x - 1, y - 1] = "2";
+                            deskMain[secondsell_x - 1, secondcell_y - 1] = "3";
+                            BuildingDesk(deskMain);
+                            goto LoopEnd;
+
+                        }
+                    }
+                }
+
+            }
+
+            if (a == 3)
+            {
+                for (int x = 1; x < 9; x++)
+                {
+                    for (int y = 1; y < 9; y++)
+                    {
+                        if ((Abs(firstcell_x - x) == Abs(firstcell_y - y)) && ((Abs(x - secondsell_x) == Abs(y - secondcell_y))))
+                        {
+                            Console.WriteLine("Фигура может достигнуть данной клетки");
+                            deskMain[firstcell_x - 1, firstcell_y - 1] = "1";
+                            deskMain[x - 1, y - 1] = "2";
+                            deskMain[secondsell_x - 1, secondcell_y - 1] = "3";
+                            BuildingDesk(deskMain);
+                            goto LoopEnd;
+
+                        }
+                    }
+                }
+                Console.WriteLine("Фигура не может достичь данной клетки");
+                deskMain[firstcell_x - 1, firstcell_y - 1] = "1";
+                deskMain[secondsell_x - 1, secondcell_y - 1] = "2";
+                BuildingDesk(deskMain);
+            }
+
+            if (a == 4)
+            {
+                for (int x = 1; x < 9; x++)
+                {
+                    for (int y = 1; y < 9; y++)
+                    {
+                        if (((Abs(firstcell_x - x) == 1) && ((Abs(firstcell_y - y) == 2)))  &&  (((Abs(x - secondsell_x) == 1) && ((Abs(y - secondcell_y) == 2)) || ((Abs(x - secondsell_x) == 2) && ((Abs(y - secondcell_y) == 1))))))
+                        {
+                            Console.WriteLine("Фигура может достигнуть данной клетки");
+                            deskMain[firstcell_x - 1, firstcell_y - 1] = "1";
+                            deskMain[x - 1, y - 1] = "2";
+                            deskMain[secondsell_x - 1, secondcell_y - 1] = "3";
+                            BuildingDesk(deskMain);
+                            goto LoopEnd;
+
+                        }
+                        else if ((((Abs(firstcell_x - x) == 2) && ((Abs(firstcell_y - y) == 1))) && (((Abs(x - secondsell_x) == 1) && ((Abs(y - secondcell_y) == 2)) || ((Abs(x - secondsell_x) == 2) && ((Abs(y - secondcell_y) == 1)))))))
+                        {
+                            Console.WriteLine("Фигура может достигнуть данной клетки");
+                            deskMain[firstcell_x - 1, firstcell_y - 1] = "1";
+                            deskMain[x - 1, y - 1] = "2";
+                            deskMain[secondsell_x - 1, secondcell_y - 1] = "3";
+                            BuildingDesk(deskMain);
+                            goto LoopEnd;
+                        }
+                    }
+                }
+                Console.WriteLine("Фигура не может достичь данной клетки");
+                deskMain[firstcell_x - 1, firstcell_y - 1] = "1";
+                deskMain[secondsell_x - 1, secondcell_y - 1] = "2";
+                BuildingDesk(deskMain);
+            }
+
+
+
+
+        LoopEnd:;
+            Console.WriteLine("The end (Слава богу)");
+        }
 
     }
 }
