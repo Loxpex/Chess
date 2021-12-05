@@ -1,13 +1,38 @@
 ﻿using System;
 using static System.Math;
+using System.IO;
+using System.Threading.Tasks;
 
 
 namespace Chess
 {
     class Program
     {
+        
+
         static void Main()
         {
+            string writePath = @"C:\Users\User\Documents\GitHub\Chess\hta.txt";
+
+            string text = "Программа запустилась";
+            try
+            {
+                using (StreamWriter sw = new StreamWriter(writePath, false, System.Text.Encoding.Default))
+                {
+                    sw.WriteLine(text);
+                }
+
+                using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
+                {
+                    sw.WriteLine("Программа запустилась");
+                }
+                Console.WriteLine("Запись выполнена");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
             string[,] deskMain = new string[8, 8];
             BuildingDesk(deskMain);
             int a = 0;
@@ -25,12 +50,12 @@ namespace Chess
                 DetermingColor(deskMain);
             }
 
-            else if (a==2)
+            else if (a == 2)
             {
                 SecondTask(deskMain);
             }
 
-            else if (a==3)
+            else if (a == 3)
             {
                 thirdTask(deskMain);
             }
@@ -40,21 +65,25 @@ namespace Chess
                 Console.WriteLine("Неверный ввод, попробуйте снова");
                 Console.WriteLine("Не забудь доработать ошибку идиот");
             }
+            using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
+            {
+                sw.WriteLine("Программа завершила работу");
+            }
         }
 
 
         static void BuildingDesk(string[,] deskMain)
         {
-            
+
             Console.Write("  1 2 3 4 5 6 7 8");
 
-            for (int i = 1; i < 9; i = i +1)
+            for (int i = 1; i < 9; i = i + 1)
             {
                 Console.WriteLine();
                 Console.Write(i);
                 for (int j = 1; j < 9; j = j + 1)
                 {
-                    if ((deskMain[i-1,j-1] != "██")&&(deskMain[i - 1, j - 1] != "  ")&&(deskMain[i - 1, j - 1] != default))
+                    if ((deskMain[i - 1, j - 1] != "██") && (deskMain[i - 1, j - 1] != "  ") && (deskMain[i - 1, j - 1] != default))
                     {
                         Console.BackgroundColor = ConsoleColor.Green;
                         Console.ForegroundColor = ConsoleColor.Black;
@@ -63,9 +92,9 @@ namespace Chess
                         Console.ResetColor();
                     }
 
-                    else if  ((i + j) % 2 == 0)
+                    else if ((i + j) % 2 == 0)
                     {
-                        deskMain[i-1,j-1] = "██";
+                        deskMain[i - 1, j - 1] = "██";
                         Console.Write(deskMain[i - 1, j - 1]);
                     }
 
@@ -103,8 +132,8 @@ namespace Chess
             {
                 Console.WriteLine("Поля - разных цветов");
             }
-            deskMain[firstcell_x-1, firstcell_y-1] = "1";
-            deskMain[secondsell_x-1, secondcell_y-1] = "2";
+            deskMain[firstcell_x - 1, firstcell_y - 1] = "1";
+            deskMain[secondsell_x - 1, secondcell_y - 1] = "2";
             BuildingDesk(deskMain);
         }
 
@@ -133,7 +162,7 @@ namespace Chess
                     Console.WriteLine("Фигура может достигнуть данной клетки");
                 }
 
-                else 
+                else
                 {
                     Console.WriteLine("Фигура не может достигнуть данной клетки");
                 }
@@ -144,7 +173,7 @@ namespace Chess
                 {
                     Console.WriteLine("Фигура может достигнуть данной клетки");
                 }
-                else 
+                else
                 {
                     Console.WriteLine("Фигура не может достигнуть данной клетки");
                 }
@@ -166,12 +195,12 @@ namespace Chess
                 {
                     Console.WriteLine("Фигура может достигнуть данной клетки");
                 }
-                else 
+                else
                 {
                     Console.WriteLine("Фигура не может достигнуть данной клетки");
                 }
             }
-            else 
+            else
             {
                 Console.WriteLine("Не забудь доработать ошибку идиот");
             }
@@ -201,14 +230,14 @@ namespace Chess
 
             if (a == 1)
             {
-                for (int x = 1; x< 9; x++)
+                for (int x = 1; x < 9; x++)
                 {
-                    for (int y = 1; y < 9; y++ )
+                    for (int y = 1; y < 9; y++)
                     {
                         if ((((Abs(firstcell_x - x) == Abs(firstcell_y - y)) || (firstcell_x == x) || (firstcell_y == y))) && (((Abs(x - secondsell_x) == Abs(y - secondcell_y)) || (x == secondsell_x) || (y == secondcell_y))))
                         {
                             Console.WriteLine("Фигура может достигнуть данной клетки в любом случае, лол");
-                            deskMain[firstcell_x -1, firstcell_y - 1] = "1";
+                            deskMain[firstcell_x - 1, firstcell_y - 1] = "1";
                             deskMain[x - 1, y - 1] = "2";
                             deskMain[secondsell_x - 1, secondcell_y - 1] = "3";
                             BuildingDesk(deskMain);
@@ -271,7 +300,7 @@ namespace Chess
                 {
                     for (int y = 1; y < 9; y++)
                     {
-                        if (((Abs(firstcell_x - x) == 1) && ((Abs(firstcell_y - y) == 2)))  &&  (((Abs(x - secondsell_x) == 1) && ((Abs(y - secondcell_y) == 2)) || ((Abs(x - secondsell_x) == 2) && ((Abs(y - secondcell_y) == 1))))))
+                        if (((Abs(firstcell_x - x) == 1) && ((Abs(firstcell_y - y) == 2))) && (((Abs(x - secondsell_x) == 1) && ((Abs(y - secondcell_y) == 2)) || ((Abs(x - secondsell_x) == 2) && ((Abs(y - secondcell_y) == 1))))))
                         {
                             Console.WriteLine("Фигура может достигнуть данной клетки");
                             deskMain[firstcell_x - 1, firstcell_y - 1] = "1";
@@ -302,8 +331,11 @@ namespace Chess
 
 
         LoopEnd:;
+            Console.WriteLine();
             Console.WriteLine("The end (Слава богу)");
-        }
 
+        }
     }
 }
+
+   
