@@ -12,26 +12,7 @@ namespace Chess
 
         static void Main()
         {
-            string writePath = @"C:\Users\User\Documents\GitHub\Chess\hta.txt";
-
-            string text = "Программа запустилась";
-            try
-            {
-                using (StreamWriter sw = new StreamWriter(writePath, false, System.Text.Encoding.Default))
-                {
-                    sw.WriteLine(text);
-                }
-
-                using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
-                {
-                    sw.WriteLine("Программа запустилась");
-                }
-                Console.WriteLine("Запись выполнена");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+           
 
             string[,] deskMain = new string[8, 8];
             BuildingDesk(deskMain);
@@ -65,10 +46,7 @@ namespace Chess
                 Console.WriteLine("Неверный ввод, попробуйте снова");
                 Console.WriteLine("Не забудь доработать ошибку идиот");
             }
-            using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
-            {
-                sw.WriteLine("Программа завершила работу");
-            }
+            
         }
 
 
