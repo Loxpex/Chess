@@ -12,20 +12,7 @@ namespace Chess
 
         static void Main()
         {
-            string writePath = @"C:\Users\User\Documents\GitHub\Chess\hta.txt";
-            try
-            {
-                using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
-                {
-                    sw.WriteLine("Программа запустилась");
-                }
-                Console.WriteLine("Запись выполнена");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
+           
             string[,] deskMain = new string[8, 8];
             BuildingDesk(deskMain);
             int a = 0;
@@ -40,54 +27,18 @@ namespace Chess
 
             if (a == 1)
             {
-                try
-                {
-                    using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
-                    {
-                        sw.WriteLine("Запрошено выполнение 1-го задания");
-                    }
-                    Console.WriteLine("Запись выполнена");
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
 
                 DetermingColor(deskMain);
             }
 
             else if (a == 2)
             {
-                try
-                {
-                    using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
-                    {
-                        sw.WriteLine("Запрошено выполнение 2-го задания");
-                    }
-                    Console.WriteLine("Запись выполнена");
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-
+               
                 SecondTask(deskMain);
             }
 
             else if (a == 3)
             {
-                try
-                {
-                    using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
-                    {
-                        sw.WriteLine("Запрошено выполнение 3-го задания");
-                    }
-                    Console.WriteLine("Запись выполнена");
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
 
                 thirdTask(deskMain);
             }
@@ -98,10 +49,6 @@ namespace Chess
                 Console.WriteLine("Не забудь доработать ошибку идиот");
             }
 
-            using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
-            {
-                sw.WriteLine("Программа завершила работу");
-            }
         }
 
 
