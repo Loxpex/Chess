@@ -12,7 +12,18 @@ namespace Chess
 
         static void Main()
         {
-           
+            string writePath = @"C:\Users\User\Documents\GitHub\Chess\hta.txt";
+            try
+            {
+                using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
+                {
+                    sw.WriteLine("Программа запустилась");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
             string[,] deskMain = new string[8, 8];
             BuildingDesk(deskMain);
@@ -28,16 +39,52 @@ namespace Chess
 
             if (a == 1)
             {
+                try
+                {
+                    using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
+                    {
+                        sw.WriteLine("Запрошено выполнение 1-го задания");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
                 DetermingColor(deskMain);
             }
 
             else if (a == 2)
             {
+                try
+                {
+                    using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
+                    {
+                        sw.WriteLine("Запрошено выполнение 2-го задания");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
                 SecondTask(deskMain);
             }
 
             else if (a == 3)
             {
+                try
+                {
+                    using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
+                    {
+                        sw.WriteLine("Запрошено выполнение 3-го задания");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
                 thirdTask(deskMain);
             }
 
@@ -46,7 +93,11 @@ namespace Chess
                 Console.WriteLine("Неверный ввод, попробуйте снова");
                 Console.WriteLine("Не забудь доработать ошибку идиот");
             }
-            
+
+            using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
+            {
+                sw.WriteLine("Программа завершила работу");
+            }
         }
 
 
@@ -83,6 +134,18 @@ namespace Chess
                     }
                 }
             }
+            string writePath = @"C:\Users\User\Documents\GitHub\Chess\hta.txt";
+            try
+            {
+                using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
+                {
+                    sw.WriteLine("Доска успешно отображена");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         static void DetermingColor(string[,] deskMain)
@@ -112,6 +175,20 @@ namespace Chess
             }
             deskMain[firstcell_x - 1, firstcell_y - 1] = "1";
             deskMain[secondsell_x - 1, secondcell_y - 1] = "2";
+
+            string writePath = @"C:\Users\User\Documents\GitHub\Chess\hta.txt";
+            try
+            {
+                using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
+                {
+                    sw.WriteLine("Задание 1 - успешно выполнено");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
             BuildingDesk(deskMain);
         }
 
@@ -185,6 +262,20 @@ namespace Chess
 
             deskMain[firstcell_x - 1, firstcell_y - 1] = "1";
             deskMain[secondsell_x - 1, secondcell_y - 1] = "2";
+
+            string writePath = @"C:\Users\User\Documents\GitHub\Chess\hta.txt";
+            try
+            {
+                using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
+                {
+                    sw.WriteLine("Задание 2 - успешно выполнено");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
             BuildingDesk(deskMain);
         }
 
@@ -302,6 +393,21 @@ namespace Chess
                 Console.WriteLine("Фигура не может достичь данной клетки");
                 deskMain[firstcell_x - 1, firstcell_y - 1] = "1";
                 deskMain[secondsell_x - 1, secondcell_y - 1] = "2";
+
+                string writePath = @"C:\Users\User\Documents\GitHub\Chess\hta.txt";
+                try
+                {
+                    using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
+                    {
+                        sw.WriteLine("Задание 4 - успешно выполнено");
+                    }
+                    Console.WriteLine("Запись выполнена");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
                 BuildingDesk(deskMain);
             }
 
